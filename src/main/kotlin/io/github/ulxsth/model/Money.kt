@@ -1,4 +1,4 @@
-package io.github.ulxsth
+package io.github.ulxsth.model
 
 import java.lang.IllegalArgumentException
 
@@ -25,9 +25,9 @@ class Money(amount: Int) {
         return Money(addedAmount)
     }
 
-    fun reduce(amount: Int): Money {
-        if(amount > 0) throw IllegalArgumentException("amountの値が1以上です")
-        val reducedAmount = this.amount + amount
+    fun dec(amount: Int): Money {
+        if(amount < 0) throw IllegalArgumentException("amountの値が0未満です")
+        val reducedAmount = this.amount - amount
         return Money(reducedAmount)
     }
 }
