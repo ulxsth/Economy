@@ -1,8 +1,10 @@
 package io.github.ulxsth.model
 
+import java.util.UUID
+
 class Player(player: org.bukkit.entity.Player, money: Money) {
-    private val bukkitPlayer: org.bukkit.entity.Player
-    private val money: Money
+    val bukkitPlayer: org.bukkit.entity.Player
+    val money: Money
 
     init {
         this.bukkitPlayer = player

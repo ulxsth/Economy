@@ -3,8 +3,8 @@ package io.github.ulxsth.model
 import java.lang.IllegalArgumentException
 
 class Money(amount: Int) {
-    private val currency = "yen"
-    private val amount: Int
+    val currency = "yen"
+    val amount: Int
 
     init {
         if (amount < 0) throw IllegalArgumentException("amountの値が0未満です")
