@@ -2,3 +2,7 @@ name: Economy
 version: 1.0.0
 main: io.github.ulxsth.EconomyPlugin
 author: ulxsth
+commands:
+  bal:
+    aliases: [ bal, balance ]
+    description: "所持金を確認します"
