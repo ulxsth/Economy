@@ -30,7 +30,6 @@ class PlayerDBManager {
     fun create(player: Player) {
         val playerMoney = player.money
         val playerUUID = player.bukkitPlayer.uniqueId
-        val statement = this.connection.createStatement()
 
         val sql = "INSERT INTO $TABLE_NAME(uuid, amount) VALUES(?, ?)"
         val ps = this.connection.prepareStatement(sql)
@@ -44,10 +43,10 @@ class PlayerDBManager {
     }
 
     fun read(uuid: UUID): Money {
-        val statement = this.connection.createStatement()
-
-        val sql = "SELECT amount FROM $TABLE_NAME WHERE uuid = $uuid"
-        val rs = statement.executeQuery(sql)
+        val sql = "SELECT amount FROM $TABLE_NAME WHERE uuid = ?"
+        val ps = this.connection.prepareStatement(sql)
+        ps.setString(1, uuid.toString())
+        val rs = ps.executeQuery()
         rs.next()
 
         val amount = rs.getInt(2)
@@ -60,17 +59,19 @@ class PlayerDBManager {
 
     fun update(player: Player, amount: Int) {
         val playerUUID: UUID = player.bukkitPlayer.uniqueId
-        val statement = this.connection.createStatement()
 
-        val sql = "UPDATE $TABLE_NAME SET amount = $amount WHERE uuid = $playerUUID"
-        statement.executeUpdate(sql)
+        val sql = "UPDATE $TABLE_NAME SET amount = ? WHERE uuid = ?"
+        val ps = this.connection.prepareStatement(sql)
+        ps.setInt(1, amount)
+        ps.setString(2, playerUUID.toString())
+        ps.executeUpdate()
     }
 
     fun delete(uuid: UUID) {
-        val statement = this.connection.createStatement()
-
-        val sql = "DELETE FROM $TABLE_NAME WHERE uuid = $uuid"
-        statement.executeUpdate(sql)
+        val sql = "DELETE FROM $TABLE_NAME WHERE uuid = ?"
+        val ps = this.connection.prepareStatement(sql)
+        ps.setString(1, uuid.toString())
+        ps.executeUpdate()
     }
 
     fun isExist(uuid: UUID): Boolean {
