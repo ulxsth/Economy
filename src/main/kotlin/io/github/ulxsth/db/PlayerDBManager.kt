@@ -66,11 +66,9 @@ class PlayerDBManager {
             ps.setString(1, uuid.toString())
             val rs = ps.executeQuery()
             rs.next()
-
-            val amount = rs.getInt(2)
-
-            // データが存在するか判定する
+            val amount = rs.getInt(1)
             if (rs.wasNull()) throw SQLException("データが存在しません")
+
             val playerMoney = Money(amount)
             return playerMoney
         } catch (err: SQLException) {
