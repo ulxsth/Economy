@@ -1,36 +1,43 @@
 package io.github.ulxsth.db
 
+import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer
 import io.github.ulxsth.EconomyPlugin
 import io.github.ulxsth.model.Money
 import io.github.ulxsth.model.Player
 import java.sql.Connection
 import java.sql.DriverManager
+import java.sql.PreparedStatement
 import java.sql.SQLException
 import java.util.UUID
 
 class PlayerDBManager {
     private val connection: Connection
-    private val plugin: EconomyPlugin = EconomyPlugin()
+    private val plugin: EconomyPlugin = EconomyPlugin.getInstance()
 
     private val TABLE_NAME = "player"
 
     init {
-        this.connection = DriverManager.getConnection("jdbc:sqlite:" + plugin.dataFolder + "player.db")
+        this.connection = DriverManager.getConnection("jdbc:sqlite:" + plugin.dataFolder + "\\player.db")
         val statement = connection.createStatement()
 
         // dbの作成
-        statement.executeUpdate("CREATE TABLE IF NOT EXISTS player $TABLE_NAME(uuid string, amount integer primary key)")
-        statement.executeUpdate("INSERT INTO $TABLE_NAME values('0', 0)")
+        statement.executeUpdate("CREATE TABLE IF NOT EXISTS $TABLE_NAME(uuid string primary key, amount integer)")
         this.plugin.logger.info("TABLE CREATED")
     }
 
+    // TODO PreparedStatementを使う
+    // TODO close処理の挿入
     fun create(player: Player) {
         val playerMoney = player.money
-        val playerUUID: UUID = player.bukkitPlayer.uniqueId
+        val playerUUID = player.bukkitPlayer.uniqueId
         val statement = this.connection.createStatement()
 
-        val sql = "INSERT OR REPLACE INTO $TABLE_NAME(uuid, amount) VALUES ($playerUUID, ${playerMoney.amount})"
-        statement.executeUpdate(sql)
+        val sql = "INSERT INTO $TABLE_NAME(uuid, amount) VALUES(?, ?)"
+        val ps = this.connection.prepareStatement(sql)
+        ps.setString(1, playerUUID.toString())
+        ps.setInt(2, playerMoney.amount)
+        ps.executeUpdate()
+
 
         val playerName = player.bukkitPlayer.name
         this.plugin.logger.info("Initialized data: $playerName(uuid: $playerUUID)")
@@ -41,10 +48,12 @@ class PlayerDBManager {
 
         val sql = "SELECT amount FROM $TABLE_NAME WHERE uuid = $uuid"
         val rs = statement.executeQuery(sql)
+        rs.next()
 
-        if(rs.row == 0) throw SQLException("Data not found")
+        val amount = rs.getInt(2)
 
-        val amount = rs.getInt(1)
+        // データが存在するか判定する
+        if(rs.wasNull()) throw SQLException("データが存在しません")
         val playerMoney = Money(amount)
         return playerMoney
     }
@@ -62,5 +71,14 @@ class PlayerDBManager {
 
         val sql = "DELETE FROM $TABLE_NAME WHERE uuid = $uuid"
         statement.executeUpdate(sql)
+    }
+
+    fun isExist(uuid: UUID): Boolean {
+        try {
+            read(uuid)
+        } catch (err: SQLException) {
+            return false
+        }
+        return true
     }
 }

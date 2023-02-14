@@ -3,10 +3,19 @@ package io.github.ulxsth
 import org.bukkit.plugin.java.JavaPlugin
 
 class EconomyPlugin: JavaPlugin() {
+    companion object {
+        private var instance: EconomyPlugin? = null
+
+        fun getInstance(): EconomyPlugin {
+            return instance?: throw IllegalStateException("メインクラスが初期化されていません")
+        }
+    }
+
     @Override
     override fun onEnable() {
-        this.server.pluginManager.registerEvents(EventListener(), this)
+        if(instance != null) throw IllegalStateException("メインクラスは既に初期化されています")
+        instance = this
         this.dataFolder.mkdirs()
-        saveResource("data.yml", false)
+        this.server.pluginManager.registerEvents(EventListener(), this)
     }
 }
