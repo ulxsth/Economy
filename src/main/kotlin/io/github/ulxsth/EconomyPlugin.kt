@@ -1,5 +1,6 @@
 package io.github.ulxsth
 
+import io.github.ulxsth.command.BalanceCommandExecutor
 import org.bukkit.plugin.java.JavaPlugin
 
 class EconomyPlugin: JavaPlugin() {
@@ -17,5 +18,8 @@ class EconomyPlugin: JavaPlugin() {
         instance = this
         this.dataFolder.mkdirs()
         this.server.pluginManager.registerEvents(EventListener(), this)
+
+        // コマンドの登録
+        getCommand("bal")?.setExecutor(BalanceCommandExecutor())
     }
 }
