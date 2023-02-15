@@ -1,12 +1,10 @@
 package io.github.ulxsth.db
 
-import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer
 import io.github.ulxsth.EconomyPlugin
 import io.github.ulxsth.model.Money
 import io.github.ulxsth.model.Player
 import java.sql.Connection
 import java.sql.DriverManager
-import java.sql.PreparedStatement
 import java.sql.SQLException
 import java.util.UUID
 
@@ -80,7 +78,8 @@ class PlayerDBManager {
         return null
     }
 
-    fun update(player: Player, amount: Int) {
+    fun update(player: Player) {
+        val amount = player.money.amount
         val playerUUID: UUID = player.bukkitPlayer.uniqueId
         var connection: Connection? = null
 
