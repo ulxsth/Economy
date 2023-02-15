@@ -1,6 +1,7 @@
 package io.github.ulxsth
 
 import io.github.ulxsth.command.BalanceCommandExecutor
+import io.github.ulxsth.command.addCommandExecutor
 import org.bukkit.plugin.java.JavaPlugin
 
 class EconomyPlugin: JavaPlugin() {
@@ -21,5 +22,6 @@ class EconomyPlugin: JavaPlugin() {
 
         // コマンドの登録
         getCommand("bal")?.setExecutor(BalanceCommandExecutor())
+        getCommand("add")?.setExecutor(addCommandExecutor())
     }
 }

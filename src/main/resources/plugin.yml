@@ -6,3 +6,9 @@ commands:
   bal:
     aliases: [ bal, balance ]
     description: "所持金を確認します"
+  add:
+    aliases: [add]
+    description: "プレイヤーの所持金を追加します"
+  dec:
+    aliases: [dec]
+    description: "プレイヤーの所持金を減らします"
