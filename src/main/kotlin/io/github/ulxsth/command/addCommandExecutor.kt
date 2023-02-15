@@ -36,7 +36,7 @@ class addCommandExecutor: CommandExecutor {
         val playerUUID = bukkitPlayer.uniqueId
         val playerMoney = db.read(playerUUID)
         if(playerMoney == null) {
-            sender.sendMessage("§c[ERROR] プレイヤーデータが取得できませんでした")
+            sender.sendMessage("§4[ERROR] プレイヤーデータが取得できませんでした")
             return true
         }
 
