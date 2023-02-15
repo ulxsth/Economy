@@ -53,7 +53,6 @@ class decCommandExecutor: CommandExecutor {
             sender.sendMessage("§c[WARN] amountの値が不正です。amountは0以上である必要があります")
             return true
         }
-        val playerAmount = playerMoney.amount
         val newPlayerMoney = playerMoney.dec(decAmount)
         val newPlayer = Player(bukkitPlayer, newPlayerMoney)
         db.update(newPlayer)
