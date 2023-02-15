@@ -59,7 +59,7 @@ class decCommandExecutor: CommandExecutor {
 
         val newAmount = newPlayerMoney.amount
         sender.sendMessage("§a>> §f所持金の更新に成功しました")
-        sender.sendMessage("§a>> §f$playerName: $newAmount §2(+$decAmount)")
+        sender.sendMessage("§a>> §f$playerName: $newAmount §4(-$decAmount)")
 
         return true
     }
