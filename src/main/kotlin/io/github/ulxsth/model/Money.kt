@@ -1,6 +1,7 @@
 package io.github.ulxsth.model
 
 import java.lang.IllegalArgumentException
+import java.lang.Integer.max
 
 class Money(amount: Int) {
     val currency = "yen"
@@ -27,7 +28,7 @@ class Money(amount: Int) {
 
     fun dec(amount: Int): Money {
         if(amount < 0) throw IllegalArgumentException("amountの値が0未満です")
-        val reducedAmount = this.amount - amount
+        val reducedAmount = max(this.amount - amount, 0)
         return Money(reducedAmount)
     }
 }
