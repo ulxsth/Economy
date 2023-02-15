@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b1c5ec2-e78e-45e9-930a-d236cb4cd153" name="変更" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/EventListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/db/PlayerDBManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/model/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="8b1c5ec2-e78e-45e9-930a-d236cb4cd153" name="変更" comment="[ADD] /dec の処理クラスを追加">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/EconomyPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/EconomyPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/Money.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/model/Money.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/io/github/ulxsth/Player.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +16,37 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Economy" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Economy" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Economy" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="shadow" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,13 +75,43 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;project.structure.last.edited&quot;: &quot;モジュール&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="io.github.ulxsth.model" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="economy [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="shadowJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.economy [shadowJar]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,7 +129,84 @@
       <option name="project" value="LOCAL" />
       <updated>1675470229085</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init">
+      <created>1675955592754</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675955592754</updated>
+    </task>
+    <task id="LOCAL-00003" summary="DB処理を追加">
+      <created>1676352612996</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676352612996</updated>
+    </task>
+    <task id="LOCAL-00004" summary="bal追加">
+      <created>1676362112123</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676362112123</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bal実装">
+      <created>1676362139855</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676362139855</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update">
+      <created>1676362185267</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676362185267</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[fix] 所持金を減らす処理で0以下が代入される場合の処理を追加">
+      <created>1676436902725</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676436902725</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[ADD] /add を実装">
+      <created>1676440062039</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676440062039</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[DELETE] jsonライブラリの削除">
+      <created>1676440090557</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676440090557</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[REFACTOR] 不要なインポート、フィールド変数の削除">
+      <created>1676440164969</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676440164969</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[FIX] 所持金がマイナスになったときは例外をスローするようにした">
+      <created>1676440262219</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676440262219</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[ADD] /dec の処理クラスを追加">
+      <created>1676440289048</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676440289048</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,6 +222,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="DB処理を追加" />
+    <MESSAGE value="bal追加" />
+    <MESSAGE value="bal実装" />
+    <MESSAGE value="update" />
+    <MESSAGE value="[fix] 所持金を減らす処理で0以下が代入される場合の処理を追加" />
+    <MESSAGE value="[ADD] /add を実装" />
+    <MESSAGE value="[DELETE] jsonライブラリの削除" />
+    <MESSAGE value="[REFACTOR] 不要なインポート、フィールド変数の削除" />
+    <MESSAGE value="[[REFACTOR] 不要なインポート、フィールド変数の削除]" />
+    <MESSAGE value="[FIX] 所持金がマイナスになったときは例外をスローするようにした" />
+    <MESSAGE value="[ADD] /dec の処理クラスを追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] /dec の処理クラスを追加" />
   </component>
 </project>
