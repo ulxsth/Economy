@@ -42,7 +42,8 @@ class decCommandExecutor: CommandExecutor {
 
 
         // 加算処理
-        val decAmount: Int
+        val playerAmount = playerMoney.amount
+        var decAmount: Int
         try {
             decAmount = Integer.parseInt(args[1])
         } catch (err: NumberFormatException) {
@@ -52,6 +53,9 @@ class decCommandExecutor: CommandExecutor {
         if(decAmount < 0) {
             sender.sendMessage("§c[WARN] amountの値が不正です。amountは0以上である必要があります")
             return true
+        } else if(decAmount > playerAmount) {
+            sender.sendMessage("§a>> §fプレイヤーの所持金より大きい値を指定したため、所持金が0になるように調整されます")
+            decAmount = playerAmount
         }
         val newPlayerMoney = playerMoney.dec(decAmount)
         val newPlayer = Player(bukkitPlayer, newPlayerMoney)
