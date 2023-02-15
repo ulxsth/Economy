@@ -16,13 +16,6 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     compileOnly("io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT")
-
-    // Json
-    implementation(group = "com.fasterxml.jackson.core", name = "jackson-annotations", version = "2.13.2")
-    implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = "2.13.2.2")
-    implementation(group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = "2.13.2")
-    implementation(group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-jsr310", version = "2.13.2")
-
 }
 
 java {
