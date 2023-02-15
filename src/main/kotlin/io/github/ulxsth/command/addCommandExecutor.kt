@@ -1,6 +1,5 @@
 package io.github.ulxsth.command
 
-import io.github.ulxsth.EconomyPlugin
 import io.github.ulxsth.db.PlayerDBManager
 import io.github.ulxsth.model.Player
 import org.bukkit.Bukkit
@@ -54,7 +53,7 @@ class addCommandExecutor: CommandExecutor {
             return true
         }
         val playerAmount = playerMoney.amount
-        val newPlayerMoney = playerMoney.set(playerAmount + addAmount)
+        val newPlayerMoney = playerMoney.add(addAmount)
         val newPlayer = Player(bukkitPlayer, newPlayerMoney)
         db.update(newPlayer)
 
