@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 
 class addCommandExecutor: CommandExecutor {
-    val db = PlayerDBManager()
+    private val db = PlayerDBManager()
 
     val USAGE = "§aUsage: /add <player> <amount>"
 
