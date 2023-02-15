@@ -15,15 +15,19 @@ class PlayerDBManager {
     private val TABLE_NAME = "player"
 
     init {
-        val connection = DriverManager.getConnection(this.PATH)
-        val statement = connection.createStatement()
+        var connection: Connection? = null
+        try {
+            connection = DriverManager.getConnection(this.PATH)
+            val statement = connection.createStatement()
 
-        // dbの作成
-        statement.executeUpdate("CREATE TABLE IF NOT EXISTS $TABLE_NAME(uuid string primary key, amount integer)")
-        this.plugin.logger.info("TABLE CREATED")
-
-        statement.close()
-        connection.close()
+            // dbの作成
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS $TABLE_NAME(uuid string primary key, amount integer)")
+            this.plugin.logger.info("TABLE CREATED")
+        } catch (err: SQLException) {
+            err.printStackTrace()
+        } finally {
+            connection?.close()
+        }
     }
 
     fun create(player: Player) {
