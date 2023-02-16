@@ -2,17 +2,17 @@ package io.github.ulxsth.db
 
 import io.github.ulxsth.EconomyPlugin
 import io.github.ulxsth.model.Money
-import io.github.ulxsth.model.Player
+import io.github.ulxsth.model.User
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 import java.util.UUID
 
-class PlayerDBManager {
+class UserDBManager {
     private val plugin: EconomyPlugin = EconomyPlugin.getInstance()
 
-    private val PATH = "jdbc:sqlite:" + plugin.dataFolder + "\\player.db"
-    private val TABLE_NAME = "player"
+    private val PATH = "jdbc:sqlite:" + plugin.dataFolder + "\\user.db"
+    private val TABLE_NAME = "user"
 
     init {
         var connection: Connection? = null
@@ -30,22 +30,22 @@ class PlayerDBManager {
         }
     }
 
-    fun create(player: Player) {
+    fun create(user: User) {
         var connection: Connection? = null
 
         try {
             connection = DriverManager.getConnection(this.PATH)
-            val playerMoney = player.money
-            val playerUUID = player.bukkitPlayer.uniqueId
+            val userMoney = user.money
+            val userUUID = user.player.uniqueId
 
             val sql = "INSERT INTO $TABLE_NAME(uuid, amount) VALUES(?, ?)"
             val ps = connection.prepareStatement(sql)
-            ps.setString(1, playerUUID.toString())
-            ps.setInt(2, playerMoney.amount)
+            ps.setString(1, userUUID.toString())
+            ps.setInt(2, userMoney.amount)
             ps.executeUpdate()
 
-            val playerName = player.bukkitPlayer.name
-            this.plugin.logger.info("Initialized data: $playerName(uuid: $playerUUID)")
+            val userName = user.player.name
+            this.plugin.logger.info("Initialized data: $userName(uuid: $userUUID)")
         } catch (err: SQLException) {
             err.printStackTrace()
         } finally {
@@ -71,8 +71,8 @@ class PlayerDBManager {
             val amount = rs.getInt(1)
             if (rs.wasNull()) throw SQLException("データが存在しません")
 
-            val playerMoney = Money(amount)
-            return playerMoney
+            val userMoney = Money(amount)
+            return userMoney
         } catch (err: SQLException) {
             err.printStackTrace()
         } finally {
@@ -82,9 +82,9 @@ class PlayerDBManager {
         return null
     }
 
-    fun update(player: Player) {
-        val amount = player.money.amount
-        val playerUUID: UUID = player.bukkitPlayer.uniqueId
+    fun update(user: User) {
+        val amount = user.money.amount
+        val userUUID: UUID = user.player.uniqueId
         var connection: Connection? = null
 
         try {
@@ -92,7 +92,7 @@ class PlayerDBManager {
             val sql = "UPDATE $TABLE_NAME SET amount = ? WHERE uuid = ?"
             val ps = connection.prepareStatement(sql)
             ps.setInt(1, amount)
-            ps.setString(2, playerUUID.toString())
+            ps.setString(2, userUUID.toString())
             ps.executeUpdate()
         } catch (err: SQLException) {
             err.printStackTrace()
